@@ -1,0 +1,20 @@
+<h1 class="mt-4">Dashboard</h1>
+<p class="lead mb-3">Welcome user with id: <%= user.name %></p>
+
+<!-- The loop will loop based on how many session is exits -->
+<!-- And will not create the super admin session, when admin click the revoke buttion -->
+<!-- It will send a post to the server and send that sessionID back to the server to revoke it -->
+<% for (let i = 0; i < Object.keys(admin).length;  i++ ) { %>
+    <% if (admin[Object.keys(admin)[i]]!=888) { %>
+        <div>
+        <p>Current Active Sessions:</p>
+        <form action="/admin" method="post">
+            <p id='123'>SessionID:<%= Object.keys(admin)[i] %></p>
+            <p id='456'>UserID:<%= admin[Object.keys(admin)[i]] %></p>
+            <button type="submit" name='Sid' value= <%= Object.keys(admin)[i] %> > Revoke Session</buttion>
+        </form>
+        </div>
+    <%} %>
+<% } %>
+
+
